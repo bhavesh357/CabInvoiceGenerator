@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class InvoiceGenerator {
     private final double fare;
-    private final int rides;
+    private final RideRepository rides;
     private final double avgFarePerRide;
 
-    public InvoiceGenerator(double fare, int rides) {
-        this.fare = fare;
+    public InvoiceGenerator(RideRepository rides) {
+        this.fare = rides.getTotalFare();
         this.rides = rides;
-        this.avgFarePerRide = this.fare/this.rides;
+        this.avgFarePerRide = this.fare/this.rides.getTotalRides();
     }
 
     @Override
@@ -19,7 +19,8 @@ public class InvoiceGenerator {
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceGenerator that = (InvoiceGenerator) o;
         return Double.compare(that.fare, fare) == 0 &&
-                rides == that.rides;
+                Double.compare(that.avgFarePerRide, avgFarePerRide) == 0 &&
+                Objects.equals(rides, that.rides);
     }
 
     @Override
