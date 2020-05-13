@@ -15,11 +15,15 @@ public class InvoiceService {
     }
 
     public double calculateFare(double distance, int time) {
-        return new Ride(distance,time).getFare();
+        return new NormalRide(distance,time).getFare();
     }
 
     public void addRide(double distance, int time) {
         rideRepository.addRide(distance,time);
+    }
+
+    public void addPremiumRide(double distance, int time) {
+        rideRepository.addPremiumRide(distance,time);
     }
 
     public double calculateFare() {
@@ -36,4 +40,5 @@ public class InvoiceService {
         }
         return null;
     }
+
 }

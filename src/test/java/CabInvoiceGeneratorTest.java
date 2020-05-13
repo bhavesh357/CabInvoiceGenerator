@@ -38,7 +38,8 @@ public class CabInvoiceGeneratorTest {
         RideRepository rideRepository = new RideRepository();
         rideRepository.addRide(2,5);
         rideRepository.addRide(3.5,10);
-        Assert.assertEquals(invoice,new InvoiceGenerator(70,rideRepository));
+        InvoiceGenerator expected = new InvoiceGenerator(rideRepository);
+        Assert.assertEquals(expected,invoice);
     }
 
     @Test
@@ -50,7 +51,7 @@ public class CabInvoiceGeneratorTest {
         RideRepository rideRepository = new RideRepository();
         rideRepository.addRide(2,5);
         rideRepository.addRide(3.5,10);
-        Assert.assertEquals(invoice,new InvoiceGenerator(70,rideRepository));
+        Assert.assertEquals(invoice,new InvoiceGenerator(rideRepository));
     }
 
     @Test
@@ -60,5 +61,17 @@ public class CabInvoiceGeneratorTest {
         invoiceService.addRide(3.5,10);
         InvoiceGenerator invoice= invoiceService.getInvoice("Shivam");
         Assert.assertEquals(invoice,null);
+    }
+
+    @Test
+    public void givenMultipleDistanceAndTimeAndPremiumRide_WhenRightUserId_ShouldReturnInvoice() {
+        InvoiceService invoiceService = new InvoiceService("Bhavesh");
+        invoiceService.addRide(2,5);
+        invoiceService.addPremiumRide(3.5,10);
+        InvoiceGenerator invoice= invoiceService.getInvoice("Bhavesh");
+        RideRepository rideRepository = new RideRepository();
+        rideRepository.addRide(2,5);
+        rideRepository.addPremiumRide(3.5,10);
+        Assert.assertEquals(invoice,new InvoiceGenerator(rideRepository));
     }
 }

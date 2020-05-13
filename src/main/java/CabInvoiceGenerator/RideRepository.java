@@ -11,7 +11,11 @@ public class RideRepository {
     }
 
     public void addRide(double distance, int time) {
-        listOfRides.add(new Ride(distance,time));
+        listOfRides.add(new NormalRide(distance,time));
+    }
+
+    public void addPremiumRide(double distance, int time) {
+        listOfRides.add(new PremiumRide(distance,time));
     }
 
     public int getTotalRides() {
@@ -39,4 +43,5 @@ public class RideRepository {
     public int hashCode() {
         return Objects.hash(listOfRides, totalFare);
     }
+
 }
