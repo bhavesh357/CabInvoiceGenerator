@@ -1,3 +1,4 @@
+import CabInvoiceGenerator.InvoiceGenerator;
 import CabInvoiceGenerator.InvoiceSummary;
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,4 +28,12 @@ public class CabInvoiceGeneratorTest {
         Assert.assertEquals(70,fare,0.0);
     }
 
+    @Test
+    public void givenMultipleDistanceAndTime_ShouldReturnInvoice() {
+        InvoiceSummary invoiceSummary = new InvoiceSummary();
+        invoiceSummary.addRide(2,5);
+        invoiceSummary.addRide(3.5,10);
+        InvoiceGenerator invoice=invoiceSummary.getInvoice();
+        Assert.assertEquals(invoice,new InvoiceGenerator(70,2));
+    }
 }
