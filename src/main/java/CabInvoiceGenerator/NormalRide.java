@@ -25,15 +25,6 @@ public class NormalRide implements Ride{
         return fare;
     }
 
-    @Override
-    public double getDistance() {
-        return distance;
-    }
-
-    @Override
-    public int getTime() {
-        return 0;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -45,8 +36,4 @@ public class NormalRide implements Ride{
                 Double.compare(that.fare, fare) == 0;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(distance, time, fare);
-    }
 }

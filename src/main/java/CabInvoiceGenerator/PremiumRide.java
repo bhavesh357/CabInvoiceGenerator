@@ -26,16 +26,6 @@ public class PremiumRide implements Ride{
     }
 
     @Override
-    public double getDistance() {
-        return distance;
-    }
-
-    @Override
-    public int getTime() {
-        return 0;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -45,8 +35,4 @@ public class PremiumRide implements Ride{
                 Double.compare(that.fare, fare) == 0;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(distance, time, fare);
-    }
 }

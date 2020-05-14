@@ -39,9 +39,4 @@ public class RideRepository {
                 Objects.equals(listOfRides, that.listOfRides);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(listOfRides, totalFare);
-    }
-
 }

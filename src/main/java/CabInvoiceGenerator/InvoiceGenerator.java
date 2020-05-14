@@ -23,8 +23,4 @@ public class InvoiceGenerator {
                 Objects.equals(rides, that.rides);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(fare, rides);
-    }
 }
