@@ -1,4 +1,4 @@
-package CabInvoiceGenerator;
+package CabInvoiceGenerator.model;
 
 public interface Ride {
     

@@ -1,5 +1,9 @@
 package CabInvoiceGenerator;
 
+import CabInvoiceGenerator.model.NormalRide;
+import CabInvoiceGenerator.model.PremiumRide;
+import CabInvoiceGenerator.model.Ride;
+
 import java.util.ArrayList;
 import java.util.Objects;
 

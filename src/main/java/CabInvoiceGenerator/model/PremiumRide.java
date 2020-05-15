@@ -1,8 +1,6 @@
-package CabInvoiceGenerator;
+package CabInvoiceGenerator.model;
 
-import java.util.Objects;
-
-public class PremiumRide implements Ride{
+public class PremiumRide implements Ride {
     double distance;
     int time;
     double fare;

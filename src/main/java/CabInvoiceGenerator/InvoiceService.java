@@ -1,5 +1,7 @@
 package CabInvoiceGenerator;
 
+import CabInvoiceGenerator.model.NormalRide;
+
 public class InvoiceService {
     double fare=0;
     private String userId;
