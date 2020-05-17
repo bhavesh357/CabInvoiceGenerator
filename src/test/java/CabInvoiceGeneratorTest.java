@@ -1,6 +1,7 @@
 import CabInvoiceGenerator.InvoiceGenerator;
 import CabInvoiceGenerator.InvoiceService;
 import CabInvoiceGenerator.RideRepository;
+import CabInvoiceGenerator.exceptions.CabInvoiceException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -83,5 +84,25 @@ public class CabInvoiceGeneratorTest {
         RideRepository rideRepository = new RideRepository();
         rideRepository.addPremiumRide(0.5,2);
         Assert.assertEquals(invoice,new InvoiceGenerator(rideRepository));
+    }
+
+    @Test
+    public void givenDistanceAndTime_WhenDistanceNegative_ShouldReturnException() {
+        try {
+        InvoiceService invoiceService = new InvoiceService();
+        invoiceService.addPremiumRide(-0.5,2);
+        }catch (CabInvoiceException e){
+            Assert.assertEquals(CabInvoiceException.ERROR_TYPE.NEGATIVE_INPUTS,e.errorType);
+        }
+    }
+
+    @Test
+    public void givenDistanceAndTime_WhenTimeNegative_ShouldReturnException() {
+        try {
+            InvoiceService invoiceService = new InvoiceService();
+            invoiceService.addRide(0.5,-2);
+        }catch (CabInvoiceException e){
+            Assert.assertEquals(CabInvoiceException.ERROR_TYPE.NEGATIVE_INPUTS,e.errorType);
+        }
     }
 }

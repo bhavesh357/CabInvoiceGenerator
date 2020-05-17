@@ -1,5 +1,6 @@
 package CabInvoiceGenerator;
 
+import CabInvoiceGenerator.exceptions.CabInvoiceException;
 import CabInvoiceGenerator.model.NormalRide;
 import CabInvoiceGenerator.model.PremiumRide;
 import CabInvoiceGenerator.model.Ride;
@@ -15,11 +16,19 @@ public class RideRepository {
     }
 
     public void addRide(double distance, int time) {
-        listOfRides.add(new NormalRide(distance,time));
+        if(distance >=0 && time >= 0) {
+            listOfRides.add(new NormalRide(distance, time));
+        }else{
+            throw new CabInvoiceException(CabInvoiceException.ERROR_TYPE.NEGATIVE_INPUTS);
+        }
     }
 
     public void addPremiumRide(double distance, int time) {
-        listOfRides.add(new PremiumRide(distance,time));
+        if(distance >=0 && time >= 0) {
+            listOfRides.add(new PremiumRide(distance, time));
+        }else{
+            throw new CabInvoiceException(CabInvoiceException.ERROR_TYPE.NEGATIVE_INPUTS);
+        }
     }
 
     public int getTotalRides() {
